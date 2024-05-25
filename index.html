@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Facturas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="invoice-form">
+        <h1>Generador de Facturas</h1>
+        <form id="invoiceForm">
+            <label for="invoiceNumber" style="text-align: center;">Número de Factura:</label>
+            <input type="text" id="invoiceNumber" name="invoiceNumber" required>
+
+            <label for="customerName" style="text-align: center;">Nombre del Cliente:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="phoneNumber" style="text-align: center;">Número de Teléfono:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+            <label for="invoiceDate" style="text-align: center;">Fecha de Factura:</label>
+            <input type="date" id="invoiceDate" name="invoiceDate" required>
+
+            <fieldset class="service-realizados">
+                <legend>Servicios Realizados</legend>
+
+                <div class="service">
+                    <input type="checkbox" id="equipo" name="services" value="Equipo">
+                    <label for="equipo">Equipo</label>
+                    <input type="text" placeholder="Especificar equipo" name="equipoDetail">
+                    <input type="number" placeholder="Precio" name="equipoPrice" step="0.01">
+                </div>
+
+                <div class="service">
+                    <input type="checkbox" id="instalacionEquipo" name="services" value="Instalacion de equipo">
+                    <label for="instalacionEquipo">Instalación de equipo</label>
+                    <input type="text" placeholder="Especificar tamaño" name="instalacionDetail">
+                    <input type="number" placeholder="Precio" name="instalacionPrice" step="0.01">
+                </div>
+
+                <div class="service">
+                    <input type="checkbox" id="instalacionElectrica" name="services" value="Instalacion electrica">
+                    <label for="instalacionElectrica">Instalación eléctrica</label>
+                    <input type="number" placeholder="Precio" name="electricaPrice" step="0.01">
+                </div>
+
+                <div class="service">
+                    <input type="checkbox" id="mensulas" name="services" value="Mensulas">
+                    <label for="mensulas">Mensulas</label>
+                    <input type="number" placeholder="Precio" name="mensulasPrice" step="0.01">
+                </div>
+
+                <div class="service">
+                    <input type="checkbox" id="preinstalacion" name="services" value="Preinstalacion">
+                    <label for="preinstalacion">Preinstalación</label>
+                    <input type="number" placeholder="Precio" name="preinstalacionPrice" step="0.01">
+                </div>
+
+                <div class="service">
+                    <input type="checkbox" id="cargaRefrigerante" name="services" value="Carga de refrigerante">
+                    <label for="cargaRefrigerante">Carga de refrigerante</label>
+                    <input type="number" placeholder="Precio" name="refrigerantePrice" step="0.01">
+                </div>
+
+                <div class="service">
+                    <input type="checkbox" id="mantenimiento" name="services" value="Mantenimiento">
+                    <label for="mantenimiento">Mantenimiento</label>
+                    <input type="number" placeholder="Precio" name="mantenimientoPrice" step="0.01">
+                </div>
+
+                <div class="service">
+                    <input type="checkbox" id="reparacion" name="services" value="Reparacion">
+                    <label for="reparacion">Reparación</label>
+                    <input type="number" placeholder="Precio" name="reparacionPrice" step="0.01">
+                </div>
+            </fieldset>
+
+            <button type="submit">Generar Factura</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

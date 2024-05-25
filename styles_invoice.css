@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    min-height: 100%;
+    min-width: 100%;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.invoice-details {
+    margin-top: 20px;
+    text-align: left;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.invoice-details p {
+    margin: 5px 0;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.img-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.company-info {
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.authorized {
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
+}
