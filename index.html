@@ -5,25 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Facturas</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="./img/jslogo.png">
 </head>
 <body>
     <div class="invoice-form">
-        <h1> <img src="./img/jslogo.png" alt="logo">Facturas</h1>
+        <h1>Generador de Facturas</h1>
         <form id="invoiceForm">
-            <label for="invoiceNumber" style="text-align: center;">Número de Factura:</label>
+            <label for="invoiceNumber">Número de Factura:</label>
             <input type="text" id="invoiceNumber" name="invoiceNumber" required>
 
-            <label for="customerName" style="text-align: center;">Nombre del Cliente:</label>
+            <label for="customerName">Nombre del Cliente:</label>
             <input type="text" id="customerName" name="customerName" required>
 
-            <label for="phoneNumber" style="text-align: center;">Número de Teléfono:</label>
+            <label for="phoneNumber">Número de Teléfono:</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" required>
 
-            <label for="invoiceDate" style="text-align: center;">Fecha de Factura:</label>
+            <label for="invoiceDate">Fecha de Factura:</label>
             <input type="date" id="invoiceDate" name="invoiceDate" required>
 
-            <fieldset class="service-realizados">
+            <fieldset>
                 <legend>Servicios Realizados</legend>
 
                 <div class="service">
@@ -76,6 +75,9 @@
                     <input type="number" placeholder="Precio" name="reparacionPrice" step="0.01">
                 </div>
             </fieldset>
+
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" rows="4" placeholder="Describe el trabajo realizado..."></textarea>
 
             <button type="submit">Generar Factura</button>
         </form>

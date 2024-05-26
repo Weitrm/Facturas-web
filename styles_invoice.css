@@ -2,55 +2,61 @@ body {
     font-family: Arial, sans-serif;
     padding: 20px;
     text-align: center;
+    align-self: center;
     align-items: center;
-    min-height: 100%;
-    min-width: 80%;
     margin-top: 30%;
-    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header img {
+    max-width: 150px;
+}
+
+
+.rut {
+    font-size: 10px;
+    text-align: end;
 }
 
 h1 {
-    text-align: center;
-}
-
-.invoice-details {
     margin-top: 20px;
-    text-align: left;
-    border: 2px solid black;
-    border-radius: 10px;
-}
-
-.invoice-details p {
-    margin: 5px 0;
-    font-size: 1.8rem;
-}
-
-.total {
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-img {
-    max-width: 150px;
     margin-bottom: 20px;
 }
 
-.img-info {
+.invoice-details, .service-details, .description, .footer {
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.service-details p, .description p, .footer p {
+    margin: 5px 0;
+}
+
+.footer {   
     display: flex;
     justify-content: space-between;
+    align-items: center; 
+
 }
 
-.company-info {
-    text-align: right;
-    margin-bottom: 20px;
-    font-size: 20px;
-    padding: 5px;
-    border: 2px solid black;
-    border-radius: 10px;
+.signature-space {
+    height: 50px;
+    border-bottom: 1px solid #000;
+    margin-top: 20px;
 }
 
-.authorized {
-    text-align: center;
-    margin-top: 40px;
-    font-weight: bold;
+.future-text-space {
+    margin-top: 20px;
+    border-bottom: 1px solid #000;
+    padding-top: 10px;
 }
