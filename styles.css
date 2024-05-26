@@ -8,11 +8,27 @@ body {
     max-width: 600px;
     margin: auto;
     padding: 20px;
+    padding-right: 40px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    img{
+        width: 15%;
+    }
+}
 
+legend {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -20,7 +36,7 @@ form {
 
 form label, form input, form fieldset, form button, form textarea {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 form input[type="text"], form input[type="tel"], form input[type="date"], form input[type="number"], form textarea {
@@ -39,6 +55,7 @@ form .service {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    font-weight: bold;
 }
 
 form .service input[type="checkbox"] {
