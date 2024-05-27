@@ -22,6 +22,21 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         total += servicePrice;
     });
 
+    const invoiceData = {
+        invoiceNumber,
+        customerName,
+        phoneNumber,
+        invoiceDate,
+        description,
+        serviceDetails,
+        total
+    };
+
+    // Guardar la factura en el LocalStorage
+    let invoices = JSON.parse(localStorage.getItem('invoices')) || [];
+    invoices.push(invoiceData);
+    localStorage.setItem('invoices', JSON.stringify(invoices));
+
     const newWindowContent = `
         <html>
             <head>
@@ -30,11 +45,13 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
             </head>
             <body>
                 <div class="header">
-                    <img src="./img/jslogo.png" alt="Logo de la Empresa">
                     <div class="company-info">
-                        <p><strong>Empresa:</strong> JS Aires Pando</p>
-                        <p><strong>Número:</strong> 093 365 696</p>
-                        <p><strong>Web:</strong> Aireacondicionadopando.com</p>
+                        <img src="./img/jslogo.png" alt="Logo de la Empresa">
+                        <div>
+                            <p><strong>Empresa:</strong> JS Aires Pando</p>
+                            <p><strong>Número:</strong> 093 365 696</p>
+                            <p><strong>Web:</strong> Aireacondicionadopando.com</p>
+                        </div>
                     </div>
                     <p class="rut">RUT: 110374690018</p>
                 </div>

@@ -19,6 +19,13 @@ body {
     max-width: 150px;
 }
 
+.company-info {
+    display: flex;
+    text-align: start;
+    div {
+        margin-left: 5px;
+    }
+}
 
 .rut {
     font-size: 10px;

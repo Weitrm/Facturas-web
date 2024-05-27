@@ -13,14 +13,25 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-h1 {
+
+.styles_titulo {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    img{
-        width: 15%;
+    a {
+        text-decoration: none;
+        padding: 4px;
+        font-size: 18px;
+        color: white;
+        background-color: #007BFF;
+        border-radius: 5px;
     }
+}
+
+img{
+    margin-left: 1rem;
+    width: 25%;
 }
 
 legend {
@@ -89,17 +100,24 @@ form button:hover {
     background-color: #0056b3;
 }
 
-@media (max-width: 768px) {
-    .invoice-form {
-        width: 90%;
-    }
 
-    form .service {
-        flex-direction: column;
-    }
+/* Estilos Facturas */
 
-    form .service input[type="text"], form .service input[type="number"], form .service label {
-        width: 100%;
-        margin-bottom: 10px;
+.facturas_inicio {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    gap: 1rem;
+    a{
+        text-decoration: none;
+        padding: 4px;
+        font-size: 18px;
+        color: white;
+        background-color: #007BFF;
+        border-radius: 5px;
     }
 }
+
