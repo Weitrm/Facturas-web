@@ -16,7 +16,7 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         const priceInput = service.parentElement.querySelector('input[type="number"]');
         const serviceName = service.value;
         const serviceDetail = detailInput ? detailInput.value : '';
-        const servicePrice = priceInput ? parseFloat(priceInput.value) : 0;
+        const servicePrice = priceInput && priceInput.value ? parseFloat(priceInput.value) : 0;
 
         serviceDetails += `<p>${serviceName} ${serviceDetail ? `- ${serviceDetail}` : ''}: $${servicePrice.toFixed(2)}</p>`;
         total += servicePrice;
@@ -53,7 +53,9 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                             <p><strong>Web:</strong> Aireacondicionadopando.com</p>
                         </div>
                     </div>
-                    <p class="rut">RUT: 110374690018</p>
+                    <div>
+                        <p class="rut">RUT: 110374690018</p>
+                    </div>
                 </div>
                 <h1>Factura</h1>
                 <div class="invoice-details">
@@ -65,7 +67,7 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                 <div class="service-details">
                      ${serviceDetails}
                 </div>
-                <p><strong>Total:</strong>${total.toFixed(2)}</p>
+                <p><strong>Total:</strong> $${total.toFixed(2)}</p>
                 <div class="description">
                     <p><strong>Detalles:</strong></p>
                     <p>${description}</p>
@@ -86,6 +88,3 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
     newWindow.document.write(newWindowContent);
     newWindow.document.close();
 });
-
-
-

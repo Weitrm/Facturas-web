@@ -43,7 +43,9 @@ function viewInvoice(index) {
                     <p><strong>Web:</strong> Aireacondicionadopando.com</p>
                 </div>
             </div>
-            <p class="rut">RUT: 110374690018</p>
+            <div>
+                <p class="rut">RUT: 110374690018</p>
+            </div>
         </div>
         <h1>Factura</h1>
         <div class="invoice-details">
