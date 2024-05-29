@@ -55,7 +55,7 @@ function viewInvoice(index) {
         <div class="service-details">
              ${serviceDetails}
         </div>
-        <p><strong>Total:</strong> $${total.toFixed(2)}</p>
+        <p><strong>Total:</strong>${total.toFixed(2)}</p>
         <div class="description">
             <p><strong>Detalles:</strong></p>
             <p>${description}</p>
