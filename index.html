@@ -13,7 +13,7 @@
             <h1>Facturas</h1>
             <a href="./facturas.html">Ver Facturas</a>
         </div>
-        <form id="invoiceForm">
+        <form id="invoiceForm" method="post">
             <label for="invoiceNumber">Número de Factura:</label>
             <input type="text" id="invoiceNumber" name="invoiceNumber" required>
 
@@ -82,11 +82,15 @@
 
             <label for="description">Descripción:</label>
             <textarea id="description" name="description" rows="4" placeholder="Describe el trabajo realizado..."></textarea>
-
+            
+            <input type="hidden" id="serviceDetails" name="serviceDetails">
             <button type="submit">Generar Factura</button>
+            
         </form>
     </div>
-
+    <?php
+    include("factura.php");
+    ?>
     <script src="script.js"></script>
 </body>
 </html>

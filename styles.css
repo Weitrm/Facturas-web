@@ -121,10 +121,3 @@ form button:hover {
     }
 }
 
-th {
-    text-decoration: underline;
-}
-
-tbody {
-    border: 1px solid black;
-}

@@ -87,3 +87,36 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
     newWindow.document.close();
 });
 
+document.getElementById('invoiceForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    let serviceDetails = '';
+
+    const services = document.querySelectorAll('.service input[type="checkbox"]:checked');
+    services.forEach(service => {
+        const detailInput = service.parentElement.querySelector('input[type="text"]');
+        const priceInput = service.parentElement.querySelector('input[type="number"]');
+        const serviceName = service.value;
+        const serviceDetail = detailInput ? detailInput.value : '';
+        const servicePrice = priceInput ? parseFloat(priceInput.value) : 0;
+
+        serviceDetails += `${serviceName} ${serviceDetail ? `- ${serviceDetail}` : ''}: $${servicePrice.toFixed(2)}\n`;
+    });
+
+    formData.append('serviceDetails', serviceDetails);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'factura.php', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            alert('Factura guardada exitosamente');
+            window.location.reload(); // Recargar la página después de guardar la factura
+        } else {
+            alert('Error al guardar la factura');
+        }
+    };
+    xhr.send(formData);
+});
+
+
