@@ -16,11 +16,22 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         const priceInput = service.parentElement.querySelector('input[type="number"]');
         const serviceName = service.value;
         const serviceDetail = detailInput ? detailInput.value : '';
-        const servicePrice = priceInput && priceInput.value ? parseFloat(priceInput.value) : 0;
+
+        console.log('service:', service);
+        console.log('priceInput:', priceInput);
+
+        let servicePrice = 0;
+        if (priceInput && priceInput.value) {
+            servicePrice = parseFloat(priceInput.value);
+        }
+
+        console.log('servicePrice:', servicePrice);
 
         serviceDetails += `<p>${serviceName} ${serviceDetail ? `- ${serviceDetail}` : ''}: $${servicePrice.toFixed(2)}</p>`;
         total += servicePrice;
     });
+
+    console.log('total:', total);
 
     const invoiceData = {
         invoiceNumber,

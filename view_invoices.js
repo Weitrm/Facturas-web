@@ -3,13 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const invoiceTableBody = document.getElementById('invoiceTableBody');
 
     invoices.forEach((invoice, index) => {
+        console.log('invoice:', invoice); // Depuración
+
+        let total = 0;
+        if (invoice.total) {
+            total = invoice.total;
+        }
+
         const row = document.createElement('tr');
 
         row.innerHTML = `
             <td>${invoice.invoiceNumber}</td>
             <td>${invoice.customerName}</td>
             <td>${invoice.invoiceDate}</td>
-            <td>$${invoice.total.toFixed(2)}</td>
+            <td>$${total.toFixed(2)}</td>
             <td>
                 <button onclick="viewInvoice(${index})">Ver</button>
                 <button onclick="sendInvoice(${index})">Enviar</button>
@@ -24,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function viewInvoice(index) {
     const invoices = JSON.parse(localStorage.getItem('invoices'));
     const invoice = invoices[index];
+
+    console.log('invoice:', invoice); // Depuración
 
     const { invoiceNumber, customerName, phoneNumber, invoiceDate, description, serviceDetails, total } = invoice;
 
@@ -57,7 +66,7 @@ function viewInvoice(index) {
         <div class="service-details">
              ${serviceDetails}
         </div>
-        <p><strong>Total:</strong> $${total.toFixed(2)}</p>
+        <p><strong>Total:</strong> $${total ? total.toFixed(2) : '0.00'}</p>
         <div class="description">
             <p><strong>Detalles:</strong></p>
             <p>${description}</p>
