@@ -52,9 +52,6 @@ function viewInvoice(index) {
                     <p><strong>Web:</strong> Aireacondicionadopando.com</p>
                 </div>
             </div>
-            <div>
-                <p class="rut">RUT: 110374690018</p>
-            </div>
         </div>
         <h1>Factura</h1>
         <div class="invoice-details">
@@ -70,14 +67,6 @@ function viewInvoice(index) {
         <div class="description">
             <p><strong>Detalles:</strong></p>
             <p>${description}</p>
-        </div>
-        <div class="footer">
-            <div class="signature-space">
-                <p>Jorge Silva</p>
-            </div>
-            <div class="future-text-space">
-                <p>Autorizado bla bla / aaaaaaaaaaaaaaaaaa</p>
-            </div>
         </div>
     </body>
 </html>
