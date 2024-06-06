@@ -6,10 +6,12 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
     const phoneNumber = document.getElementById('phoneNumber').value;
     const invoiceDate = document.getElementById('invoiceDate').value;
     const description = document.getElementById('description').value;
+    const includeIva = document.getElementById('includeIva').checked;
     
     const services = document.querySelectorAll('.service input[type="checkbox"]:checked');
     let total = 0;
     let serviceDetails = '';
+    let iva = 0;
 
     services.forEach(service => {
         const detailInput = service.parentElement.querySelector('input[type="text"]');
@@ -17,21 +19,20 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         const serviceName = service.value;
         const serviceDetail = detailInput ? detailInput.value : '';
 
-        console.log('service:', service);
-        console.log('priceInput:', priceInput);
-
         let servicePrice = 0;
         if (priceInput && priceInput.value) {
             servicePrice = parseFloat(priceInput.value);
         }
 
-        console.log('servicePrice:', servicePrice);
-
         serviceDetails += `<p>${serviceName} ${serviceDetail ? `- ${serviceDetail}` : ''}: $${servicePrice.toFixed(2)}</p>`;
         total += servicePrice;
     });
 
-    console.log('total:', total);
+    if (includeIva) {
+        iva = total * 0.22;
+        total += iva;
+        serviceDetails += `<p>IVA: $${iva.toFixed(2)}</p>`;
+    }
 
     const invoiceData = {
         invoiceNumber,
@@ -40,7 +41,8 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         invoiceDate,
         description,
         serviceDetails,
-        total
+        total,
+        iva
     };
 
     // Guardar la factura en el LocalStorage
@@ -75,7 +77,7 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                 <div class="service-details">
                      ${serviceDetails}
                 </div>
-                <p><strong>Total:</strong> $${total.toFixed(2)}</p>
+                <p class="total-p"><strong>Total:</strong> $${total.toFixed(2)}</p>
                 <div class="description">
                     <p><strong>Detalles:</strong></p>
                     <p>${description}</p>

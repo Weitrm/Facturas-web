@@ -6,6 +6,7 @@ body {
     align-items: center;
     margin-top: 30%;
     border: 1px solid #ccc;
+    max-height: 100vh;
 }
 
 .header {
@@ -18,11 +19,13 @@ body {
 
 .header img {
     max-width: 150px;
+    width: 100px;
 }
 
 .company-info {
     display: flex;
     text-align: start;
+    font-size: 12px;
     div {
         margin-left: 5px;
     }
@@ -36,11 +39,14 @@ body {
 h1 {
     margin-top: 20px;
     margin-bottom: 20px;
+    font-size: 12px;
+    text-align: start;
 }
 
 .invoice-details, .service-details, .description, .footer {
     text-align: left;
     margin-bottom: 20px;
+    font-size: 8px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -57,12 +63,7 @@ h1 {
 
 }
 
-.signature-space {
-    height: 50px;
-    margin-top: 20px;
-}
-
-.future-text-space {
-    margin-top: 20px;
-    padding-top: 10px;
+.total-p {
+    font-size: 12px;
+    text-align: end;
 }
