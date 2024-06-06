@@ -26,6 +26,14 @@
             <label for="invoiceDate">Fecha de Factura:</label>
             <input type="date" id="invoiceDate" name="invoiceDate" required>
 
+            <label for="includeRut">Incluir RUT:</label>
+            <input type="checkbox" id="includeRut" name="includeRut">
+            <label for="rut">RUT:</label>
+            <input type="text" id="rut" name="rut" value="110374690018" required>
+
+
+
+
             <fieldset>
                 <legend>Servicios Realizados</legend>
 
@@ -88,7 +96,6 @@
             
             <input type="hidden" id="serviceDetails" name="serviceDetails">
             <button type="submit">Generar Factura</button>
-            
         </form>
     </div>
 

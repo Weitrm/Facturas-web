@@ -5,13 +5,14 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
     const customerName = document.getElementById('customerName').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const invoiceDate = document.getElementById('invoiceDate').value;
-    const description = document.getElementById('description').value;
+    const includeRut = document.getElementById('includeRut').checked;
+    const rut = includeRut ? document.getElementById('rut').value : '';
     const includeIva = document.getElementById('includeIva').checked;
-    
+    const description = document.getElementById('description').value;
+
     const services = document.querySelectorAll('.service input[type="checkbox"]:checked');
     let total = 0;
     let serviceDetails = '';
-    let iva = 0;
 
     services.forEach(service => {
         const detailInput = service.parentElement.querySelector('input[type="text"]');
@@ -29,9 +30,9 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
     });
 
     if (includeIva) {
-        iva = total * 0.22;
+        const iva = total * 0.22;
+        serviceDetails += `<p>IVA (22%): $${iva.toFixed(2)}</p>`;
         total += iva;
-        serviceDetails += `<p>IVA: $${iva.toFixed(2)}</p>`;
     }
 
     const invoiceData = {
@@ -39,13 +40,13 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         customerName,
         phoneNumber,
         invoiceDate,
+        rut,
+        includeRut,
         description,
         serviceDetails,
-        total,
-        iva
+        total
     };
 
-    // Guardar la factura en el LocalStorage
     let invoices = JSON.parse(localStorage.getItem('invoices')) || [];
     invoices.push(invoiceData);
     localStorage.setItem('invoices', JSON.stringify(invoices));
@@ -55,8 +56,25 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
             <head>
                 <title>Factura</title>
                 <link rel="stylesheet" type="text/css" href="styles_invoice.css">
+                <style>
+                    @media print {
+                        body {
+                            width: 210mm;
+                            margin: 0;
+                            padding: 10mm;
+                            box-sizing: border-box;
+                        }
+                        .header, .invoice-details, .service-details, .description, .footer {
+                            page-break-inside: avoid;
+                        }
+                        .total-p {
+                            text-align: end;
+                        }
+                    }
+                </style>
             </head>
             <body>
+            <div class="div-body">
                 <div class="header">
                     <div class="company-info">
                         <img src="./img/jslogo.png" alt="Logo de la Empresa">
@@ -66,6 +84,7 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                             <p><strong>Web:</strong> Aireacondicionadopando.com</p>
                         </div>
                     </div>
+                    ${includeRut ? `<div class="rut"><p><strong>RUT:</strong> ${rut}</p></div>` : ''}
                 </div>
                 <h1>Factura</h1>
                 <div class="invoice-details">
@@ -82,6 +101,8 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                     <p><strong>Detalles:</strong></p>
                     <p>${description}</p>
                 </div>
+                <button onclick="window.print()">Imprimir Factura</button>
+            </div>
             </body>
         </html>
     `;

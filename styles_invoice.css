@@ -1,13 +1,31 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
+    border: 1px solid #ccc;
     text-align: center;
     align-self: center;
     align-items: center;
-    margin-top: 30%;
-    border: 1px solid #ccc;
-    max-height: 100vh;
 }
+.div-body {
+    margin: 10%;
+}
+@media print {
+    body {
+        margin: 0;
+        padding: 10mm;
+        box-sizing: border-box;
+    }
+    .header, .invoice-details, .service-details, .description, .footer {
+        page-break-inside: avoid;
+    }
+    .total-p {
+        text-align: end;
+    }
+    button {
+        display: none;
+    }
+}
+
 
 .header {
     display: flex;
@@ -46,7 +64,7 @@ h1 {
 .invoice-details, .service-details, .description, .footer {
     text-align: left;
     margin-bottom: 20px;
-    font-size: 8px;
+    font-size: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
