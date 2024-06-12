@@ -55,6 +55,7 @@ function viewInvoice(index) {
         </style>
     </head>
     <body>
+    <div class="div-body">
         <div class="header">
             <div class="company-info">
                 <img src="./img/jslogo.png" alt="Logo de la Empresa">
@@ -82,6 +83,7 @@ function viewInvoice(index) {
             <p>${description}</p>
         </div>
         <button onclick="window.print()">Imprimir Factura</button>
+        </div>
     </body>
 </html>
 `;
