@@ -2,19 +2,28 @@ body {
     font-family: Arial, sans-serif;
     padding: 20px;
     border: 1px solid #ccc;
-    text-align: center;
-    align-self: center;
-    align-items: center;
+    display: flex;
+    justify-content: center;
 }
-.div-body {
-    margin: 10%;
-}
+
 @media print {
+    @page {
+        margin: 0; 
+    }
+
     body {
         margin: 0;
-        padding: 10mm;
-        box-sizing: border-box;
+        padding: 0;
     }
+
+    .div-body {
+        width: 100%;
+        height: auto;
+        padding: 1cm;
+        box-sizing: border-box;
+        page-break-after: always;
+    }
+
     .header, .invoice-details, .service-details, .description, .footer {
         page-break-inside: avoid;
     }
@@ -23,6 +32,11 @@ body {
     }
     button {
         display: none;
+    }
+
+    .header img {
+        max-width: 80px;
+        width: 70px;
     }
 }
 
@@ -43,28 +57,28 @@ body {
 .company-info {
     display: flex;
     text-align: start;
-    font-size: 12px;
+    font-size: 13px;
     div {
         margin-left: 5px;
     }
 }
 
 .rut {
-    font-size: 10px;
+    font-size: 12px;
     text-align: end;
 }
 
 h1 {
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 12px;
+    font-size: 14px;
     text-align: start;
 }
 
 .invoice-details, .service-details, .description, .footer {
     text-align: left;
     margin-bottom: 20px;
-    font-size: 10px;
+    font-size: 13px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -82,6 +96,6 @@ h1 {
 }
 
 .total-p {
-    font-size: 12px;
+    font-size: 14px;
     text-align: end;
 }

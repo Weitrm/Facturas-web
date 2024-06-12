@@ -4,22 +4,6 @@ body {
     text-align: center;
 }
 
-@media print {
-    body {
-        width: 210mm;
-        height: 297mm;
-        margin: 0;
-        padding: 10mm;
-        box-sizing: border-box;
-    }
-    .header, .invoice-details, .service-details, .description, .footer {
-        page-break-inside: avoid;
-    }
-    .total-p {
-        text-align: end;
-    }
-}
-
 
 
 .invoice-form {
