@@ -1,3 +1,12 @@
+document.getElementById('paymentType').addEventListener('change', function() {
+    const installmentsDiv = document.getElementById('installmentsDiv');
+    if (this.value === 'cuotas') {
+        installmentsDiv.style.display = 'block';
+    } else {
+        installmentsDiv.style.display = 'none';
+    }
+});
+
 document.getElementById('invoiceForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
@@ -14,6 +23,14 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
     let total = 0;
     let serviceDetails = '';
 
+    const paymentType = document.getElementById('paymentType').value;
+    let installments = 1;
+    let installmentString = "";
+    if (paymentType === 'cuotas') {
+        installments = parseInt(document.getElementById('installments').value);
+        installmentString = `Cuota 1/${installments}`;
+    }
+
     services.forEach(service => {
         const detailInput = service.parentElement.querySelector('input[type="text"]');
         const priceInput = service.parentElement.querySelector('input[type="number"]');
@@ -26,14 +43,25 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         }
 
         serviceDetails += `<p>${serviceName} ${serviceDetail ? `- ${serviceDetail}` : ''}: $${servicePrice.toFixed(2)}</p>`;
+
+        if (paymentType === 'cuotas') {
+            servicePrice /= installments; // Divide el precio del servicio por la cantidad de cuotas
+        }
+
         total += servicePrice;
     });
 
     if (includeIva) {
-        const iva = total * 0.22;
+        let iva = total * 0.22;
         serviceDetails += `<p>IVA (22%): $${iva.toFixed(2)}</p>`;
         total += iva;
+
+        if (paymentType === 'cuotas') {
+            iva /= installments; // Divide el IVA por la cantidad de cuotas
+        }
     }
+
+    total = Math.round(total * 100) / 100; // Redondea el total a 2 decimales
 
     const invoiceData = {
         invoiceNumber,
@@ -44,7 +72,8 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
         includeRut,
         description,
         serviceDetails,
-        total
+        total,
+        installments,
     };
 
     let invoices = JSON.parse(localStorage.getItem('invoices')) || [];
@@ -92,6 +121,7 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                     <p><strong>Cliente:</strong> ${customerName}</p>
                     <p><strong>Teléfono:</strong> ${phoneNumber}</p>
                     <p><strong>Fecha de Factura:</strong> ${invoiceDate}</p>
+                    ${installmentString ? `<p><strong>Cuotas Pagadas:</strong> ${installmentString}</p>` : ''}
                 </div>
                 <div class="service-details">
                      ${serviceDetails}

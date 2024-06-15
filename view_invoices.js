@@ -16,9 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <td>${invoice.invoiceDate}</td>
             <td>$${total.toFixed(2)}</td>
             <td>
-                <button onclick="viewInvoice(${index})">Ver</button>
-                <button onclick="sendInvoice(${index})">Enviar</button>
-                <button onclick="deleteInvoice(${index})">Eliminar</button>
+                <button style="margin: 2px;" onclick="viewInvoice(${index})">Ver</button>
+                <button style="margin: 2px;" onclick="sendInvoice(${index})">Enviar</button>
+                <button style="margin: 2px;" onclick="deleteInvoice(${index})">Eliminar</button>
+                <button style="margin: 2px 2px 10px 2px;" onclick="modifyInvoice(${index})">Modificar</button>
             </td>
         `;
 
@@ -30,7 +31,7 @@ function viewInvoice(index) {
     const invoices = JSON.parse(localStorage.getItem('invoices'));
     const invoice = invoices[index];
 
-    const { invoiceNumber, customerName, phoneNumber, invoiceDate, rut, includeRut, description, serviceDetails, total } = invoice;
+    const { invoiceNumber, customerName, phoneNumber, invoiceDate, rut, includeRut, description, serviceDetails, total, installments, installmentsPaid } = invoice;
 
     const newWindowContent = `
     <html>
@@ -73,6 +74,7 @@ function viewInvoice(index) {
             <p><strong>Cliente:</strong> ${customerName}</p>
             <p><strong>Teléfono:</strong> ${phoneNumber}</p>
             <p><strong>Fecha de Factura:</strong> ${invoiceDate}</p>
+            <p><strong>Cuotas:</strong> ${installmentsPaid}/${installments}</p>
         </div>
         <div class="service-details">
              ${serviceDetails}
@@ -103,3 +105,40 @@ function deleteInvoice(index) {
     localStorage.setItem('invoices', JSON.stringify(invoices));
     location.reload(); // Recarga la página para actualizar la tabla de facturas
 }
+
+
+function modifyInvoice(index) {
+    const invoices = JSON.parse(localStorage.getItem('invoices'));
+    const invoice = invoices[index];
+
+    const { invoiceNumber, customerName, phoneNumber, invoiceDate, rut, includeRut, description, serviceDetails, total, installmentsPaid } = invoice;
+
+    const formContent = `
+        <form id="modifyInvoiceForm" onsubmit="updateInvoice(${index}); return false;">
+            <label for="modifiedInstallmentsPaid">Cuotas Pagadas:</label>
+            <input type="number" id="modifiedInstallmentsPaid" name="modifiedInstallmentsPaid" value="${installmentsPaid}" min="0" max="${invoice.installments}" step="1" required>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    `;
+
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.innerHTML = formContent;
+    document.body.appendChild(modal);
+}
+
+function updateInvoice(index) {
+    const invoices = JSON.parse(localStorage.getItem('invoices'));
+    const invoice = invoices[index];
+
+    const modifiedInstallmentsPaid = parseInt(document.getElementById('modifiedInstallmentsPaid').value);
+
+    invoice.installmentsPaid = modifiedInstallmentsPaid;
+
+    localStorage.setItem('invoices', JSON.stringify(invoices));
+
+    document.body.removeChild(document.querySelector('.modal'));
+    location.reload(); // Recarga la página para reflejar los cambios en la tabla de facturas
+}
+
+

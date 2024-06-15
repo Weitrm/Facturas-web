@@ -123,3 +123,6 @@ form button:hover {
     }
 }
 
+.tbody-facturas {
+    border: black 1px solid;
+}

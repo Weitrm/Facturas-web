@@ -6,25 +6,27 @@
     <title>Lista de Facturas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="body-facturas">
     <div class="invoice-list">
         <div class="facturas_inicio">
             <h1>Lista de Facturas</h1>
             <a href="./index.html">Volver al inicio</a>
         </div>
         <table>
-            <thead>
-                <tr>
-                    <th>Número de Factura</th>
-                    <th>Cliente</th>
-                    <th>Fecha</th>
-                    <th>Total</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="invoiceTableBody">
-                <!-- Facturas se mostrarán aquí -->
-            </tbody>
+            <div class="div-facturas">
+                <thead>
+                    <tr>
+                        <th>Número de Factura</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="invoiceTableBody" class="tbody-facturas">
+                    <!-- Facturas se mostrarán aquí -->
+                </tbody>
+            </div>
         </table>
     </div>
 
