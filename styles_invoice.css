@@ -5,7 +5,12 @@ body {
     display: flex;
     justify-content: center;
 }
-
+.div-body {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
 @media print {
     @page {
         margin: 0; 
@@ -57,14 +62,14 @@ body {
 .company-info {
     display: flex;
     text-align: start;
-    font-size: 13px;
+    font-size: 14px;
     div {
         margin-left: 5px;
     }
 }
 
 .rut {
-    font-size: 12px;
+    font-size: 13px;
     text-align: end;
 }
 
