@@ -108,10 +108,6 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                     <div class="company-info">
                         <img src="./img/jslogo.png" alt="Logo de la Empresa">
                         <div>
-                            <div class="electricista">
-                                <p><strong>Técnico electricista</strong></p>
-                                <img id="electricista" src="img/electricista.png" alt="logo electricista">
-                            </div>
                             <p><strong>Empresa:</strong> JS Aires Pando</p>
                             <p><strong>Número:</strong> 093 365 696</p>
                             <p><strong>Web:</strong> Aireacondicionadopando.com</p>
@@ -136,6 +132,10 @@ document.getElementById('invoiceForm').addEventListener('submit', function(event
                     <p>${description}</p>
                 </div>
                 <button onclick="window.print()">Imprimir Factura</button>
+                <div class="electricista">
+                    <p><strong>Técnico electricista</strong></p>
+                    <img id="electricista" src="img/electricista.png" alt="logo electricista">
+                </div>
             </div>
             </body>
         </html>

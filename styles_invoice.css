@@ -61,6 +61,7 @@ body {
 }
 .electricista {
     display: flex;
+    justify-content: center;
     align-items: center;
     p {
         color: yellow;
