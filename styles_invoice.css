@@ -55,6 +55,20 @@ body {
     max-width: 100%;
 }
 
+#electricista {
+    width: 40px;
+    margin-left: 5px;
+}
+.electricista {
+    display: flex;
+    align-items: center;
+    p {
+        color: yellow;
+        background-color: rgba(0, 0, 0, 0.356);
+    }
+
+}
+
 .header img {
     max-width: 150px;
     width: 100px;
