@@ -61,13 +61,7 @@ body {
 }
 .electricista {
     display: flex;
-    justify-content: center;
     align-items: center;
-    p {
-        color: yellow;
-        background-color: rgba(0, 0, 0, 0.356);
-    }
-
 }
 
 .header img {
